@@ -6,18 +6,18 @@
 - felhasználó: a vendég szerepkörén túl a saját To-dojainak kezelésére  új: módosít: törlés) képes.
 
 ## Használati esetek
-![UseCase Diagram] ../images/usecase.png)
+![UseCase Diagram] (../images/usecase.png)
 
 ## Folyamatok meghatározása
 - Felhasználó
   - To-Do felvétele
 
-![Flowchart  User)] ../images/flowchartUser.png)
+![Flowchart  User)] (../images/flowchartUser.png)
 
 - Vendég
   - Keresés
 
-![Flowchart  Guest)] ../images/flowchartGuest.png)
+![Flowchart  Guest)] (../images/flowchartGuest.png)
 
 ## Oldaltérkép
 *Publikus:*
