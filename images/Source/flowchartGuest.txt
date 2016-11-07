@@ -1,0 +1,8 @@
+#direction: right
+
+[<start>st]->[<state>fõoldal]
+[fõoldal]->[<state>keresés]
+[keresés]->[<choice>sikeres]
+[sikeres] nem ->[keresés]
+[sikeres] igen ->[<state>találatok megjelenítése]
+[találatok megjelenítése] ->[<end>e]

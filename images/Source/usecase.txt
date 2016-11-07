@@ -1,0 +1,16 @@
+
+[<actor>felhasználó] --> [<actor>vendég]
+[<actor>vendég] - [<usecase>fõoldal]
+[<actor>vendég] - [<usecase>kategóriák megtekintése]
+[<actor>vendég] - [<usecase>to-dok listázása]
+[<actor>vendég] - [<usecase>keresés]
+[<actor>vendég] - [<usecase>regisztrálás]
+
+[<actor>felhasználó] - [<usecase>bejelentkezés]
+[<actor>felhasználó] - [<usecase>kijelentkezés]
+[<actor>felhasználó] - [<usecase>új kategória létrehozása]
+[<actor>felhasználó] - [<usecase>új to-do létrehozása]
+[<actor>felhasználó] - [<usecase>profiladatok megtekintése]
+[<usecase>profiladatok megtekintése] <--<<extends>> [<usecase>profiladatok szerkesztése]
+[<actor>felhasználó] - [<usecase>saját to-dok kezelése]
+[<actor>felhasználó] - [<usecase>kategóriák szerkesztése]
