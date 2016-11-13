@@ -19,7 +19,7 @@
 
 ## Szerepkörök
 - vendég: To-dok keresését: böngészését és megtekintését végezheti.
-- felhasználó: a vendég szerepkörén túl a saját To-dojainak kezelésére  új: módosít: törlés) képes.
+- felhasználó: a vendég szerepkörén túl a saját To-dojainak kezelésére (új, módosítás, törlés) képes.
 
 ## Használati esetek
 ![UseCase Diagram] (images/usecase.png)
