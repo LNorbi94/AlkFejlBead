@@ -28,12 +28,12 @@
 - Felhasználó
   - To-Do felvétele
 
-![Flowchart  (User)] images/flowchartUser.png)
+![Flowchart  (User)] (images/flowchartUser.png)
 
 - Vendég
   - Keresés
 
-![Flowchart  (Guest)] images/flowchartGuest.png)
+![Flowchart  (Guest)] (images/flowchartGuest.png)
 
 ## Oldaltérkép
 *Publikus:*
@@ -78,4 +78,4 @@
 - GET /profile/delete: bejelentkezett felhasználó törlése
 
 ## Adatmodell
-![Data modell] images/dbdiagram.png)
+![Data modell] (images/dbdiagram.png)
