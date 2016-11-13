@@ -1,0 +1,59 @@
+{% extends 'layout' %}
+{% block profileActive %}
+    active
+{% endblock %}
+{% block content %}
+    <h2> Profil szerkesztése </h2>
+
+    {% if old('errors') %}
+    <div class="panel panel-danger">
+    <div class="panel-heading">
+        <h3 class="panel-title">Hibalista</h3>
+    </div>
+    <div class="panel-body">
+        <ul>
+            {% for error in old('errors') %}
+            <li>{{ error.message }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    </div>
+    {% endif %}
+
+    <form class="form-horizontal" method="post" action="">
+    {{ csrfField }}
+    <div class="form-group">
+        <label for="username" class="col-lg-2 control-label">Felhasználónév:</label>
+        <div class="col-lg-10">
+            <input  type="text" class="form-control" id="username" name="username" placeholder="Felhasználónév"
+                    value="{{ user.username }}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="password" class="col-lg-2 control-label">Új jelszó:</label>
+        <div class="col-lg-10">
+            <input  type="password" class="form-control" id="password" name="password" placeholder="Jelszó">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="password_confirm" class="col-lg-2 control-label">Jelszó megerősítése:</label>
+        <div class="col-lg-10">
+            <input  type="password" class="form-control" id="password_confirm" name="password_confirm" placeholder="Jelszó megerősítése">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="email" class="col-lg-2 control-label">E-mail:</label>
+        <div class="col-lg-10">
+            <input  type="email" class="form-control" id="email" name="email" placeholder="E-mail"
+                    value="{{ user.email }}" disabled>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-lg-10 col-lg-offset-2">
+        <button type="reset" class="btn btn-default"> Mégse </button>
+        <button type="submit" class="btn btn-primary"> Szerkesztés </button>
+        <a href="/profile/delete" class="btn btn-danger"> Profil törlése </a>
+        </div>
+    </div>
+    </form>
+{% endblock %}

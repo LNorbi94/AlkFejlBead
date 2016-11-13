@@ -1,24 +1,23 @@
 {% extends 'layout' %}
 
 {% block content %}
-<!-- <h2>  {{ name }} </h2> -->
-<div class="row">
-    {% for category in categories %}
-    <div class="col-md-4 col-sm-6 col-xs-12">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                {{ category.name }}
-                <span class="label label-warning pull-right"> <a href="/todos/cat/{{ category.id }}">Összes megtekintése</a> </span>
+    <div class="row">
+        {% for category in categories %}
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    {{ category.name }}
+                    <span class="label label-warning pull-right"> <a href="/categories/{{ category.id }}">Összes megtekintése</a> </span>
+                </div>
+                <ul class="list-group">
+                    {% for todo in category.topTodos %}
+                    <li class="list-group-item">
+                        <a href="/todos/{{ todo.id }}">{{ todo.name }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
             </div>
-            <ul class="list-group">
-                {% for todo in category.topTodos %}
-                <li class="list-group-item">
-                    <a href="/todos/{{ todo.id }}">{{ todo.name }}</a>
-                </li>
-                {% endfor %}
-            </ul>
         </div>
+        {% endfor %}
     </div>
-    {% endfor %}
-</div>
 {% endblock %}

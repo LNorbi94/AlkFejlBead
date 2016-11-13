@@ -26,17 +26,26 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
                 <ul class="nav navbar-nav">
+                {% if currentUser %}
                     <li class="{% block createActive %}{% endblock %}"><a href="/todos/create"> To-Do hozzáadása </a></li>
-                    <li class="{% block catCreateActive %}{% endblock %}"><a href="/category/create"> Kategória hozzáadása </a></li>
+                    <li class="{% block catCreateActive %}{% endblock %}"><a href="/categories/create"> Kategória hozzáadása </a></li>
+                {% endif %}
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                <li><a href="/login">Bejelentkezés</a></li>
-                <li><a href="/signup">Regisztráció</a></li>
-                <form class="navbar-form navbar-left" role="search">
+                {% if currentUser %}
+                    <li class="navbar-text"> Üdv, {{ currentUser.username }}! </li>
+                    <li class="{% block profileActive %}{% endblock %}"><a href="/profile" >Profil szerkesztése</a></li>
+                    <li><a href="/logout">Kijelentkezés</a></li>
+                {% else %}
+                    <li><a href="/login">Bejelentkezés</a></li>
+                    <li><a href="/signup">Regisztráció</a></li>
+                {% endif %}
+                <form class="navbar-form navbar-left" role="search" action="search" method="post">
+                    {{ csrfField }}
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Keresés">
-                        <button type="submit" class="btn btn-default"> Mehet! </button>
+                        <input type="text" class="form-control" name="todoName" id="todoName" placeholder="Keresés (névre)">
                     </div>
+                    <button type="submit" class="btn btn-default">Mehet</button>
                 </form>
                 </ul>
             </div>
@@ -48,6 +57,6 @@
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </body>
 </html>

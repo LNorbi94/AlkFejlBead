@@ -1,6 +1,6 @@
-'use strict'
+'use strict';
 
-const Lucid = use('Lucid')
+const Lucid = use('Lucid');
 
 class Category extends Lucid {
     todos () {
@@ -8,4 +8,4 @@ class Category extends Lucid {
     }
 }
 
-module.exports = Category
+module.exports = Category;

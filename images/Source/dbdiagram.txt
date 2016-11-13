@@ -1,0 +1,6 @@
+#bendSize: 2.2
+[Users|username|email|password]
+[Users]1 - 0..*[Todos]
+[Categories|name]
+[Categories]1 - 0..*[Todos]
+[Todos|name|instructions]

@@ -1,13 +1,49 @@
 {% extends 'layout' %}
-
 {% block content %}
+    {% if category %}
+        <div class="jumbotron">
+            <p> Kategória: {{ category.name }} </p>
+            {% if currentUser %}
+            <p align="right">
+                <a href="/categories/{{ category.id }}/edit" class="btn btn-default">
+                    Kategória átnevezése
+                </a>
+                <a href="/categories/{{ category.id }}/delete" class="btn btn-danger">
+                    Kategória törlése
+                </a>
+            </p>
+            {% endif %}
+        </div>
+    {% endif %}
+    {% if todos.length == 0 %}
+        {% if fromSearch %}
+        <div class="jumbotron">
+            Nem található to-do ilyen névvel!
+        </div>
+        {% elif noFilter %}
+        <div class="jumbotron">
+            Nem adtál meg keresési feltételt!
+        </div>
+        {% else %}
+        <div class="jumbotron">
+            Ebben a kategóriában nincs egy to-do sem jelenleg!
+        </div>
+        {% endif %}
+    {% endif %}
     {% for todo in todos %}
         <div class="jumbotron">
             <h2> {{ todo.name }} </h2>
-                <p> {{ todo.category.name }} </p>
+            {% if todo.category %}
+                <p align="right"> <b>Kategória:</b> {{ todo.category.name }} </p>
+            {% endif %}
             <h3> Leírás </h3>
                 <pre>{{ todo.instructions }}</pre>
-            <p align="right"> <a>Szerkesztés</a> | <a>Törlés</a> </p>
+                {% if (currentUser.id == todo.user_id) %}
+                <p align="right">
+                    <a href="/todos/{{ todo.id }}/edit" class="btn btn-default"> Szerkesztés </a>
+                    <a href="/todos/{{ todo.id }}/delete" class="btn btn-danger"> Törlés </a>
+                </p>
+                {% endif %}
         </div>
     {% endfor %}
 {% endblock %} 
