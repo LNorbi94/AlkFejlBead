@@ -141,6 +141,22 @@ class TodoController {
             })
         }
   }
+
+    * ajaxSearch (request, response) {
+        const filters = { todoName: request.input('todoName') };
+
+        if (filters.todoName.length > 0) {
+            const todos = yield Todo.query()
+            .where(function () {
+                if (filters.todoName.length > 0) this.where('name', 'LIKE', `%${filters.todoName}%`)
+            });
+
+            response.ok({ success: true, todos });
+
+        } else {
+            response.notFound('Nincs ilyen To-Do!');
+        }
+  }
 }
 
 module.exports = TodoController;

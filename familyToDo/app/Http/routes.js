@@ -28,3 +28,8 @@ Route.get('/logout', 'UserController.logout');
 Route.get('/profile', 'UserController.profile');
 Route.post('/profile', 'UserController.editProfile');
 Route.get('/profile/delete', 'UserController.doDelete');
+
+
+Route.group('ajax', function () {
+    Route.post('/search', 'TodoController.ajaxSearch');
+}).prefix('/ajax');
