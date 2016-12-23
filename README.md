@@ -81,9 +81,6 @@
 ![Data modell] (images/dbdiagram.png)
 
 ## Kliens-oldali bővítés
-a funkcióban érintett fájlok mind kliens- és szerveroldalon
-a funkció működésének, folyamatának szöveges leírása (mikor mi történik, milyen eseményekre hogyan reagál, melyik kódrészlet fut le, melyik függvény hívódik meg)
-valamelyik funkciónál 1 szekvenciadiagram a kiszolgálás folyamatáról
 - delete.js
   - A törlésnél található funkciók találhatóak itt meg.
   Amennyiban a felhasználó egy To-Dot próbál törölni, előugrik egy megerősítő ablak, amelyben eldöntheti valóban kívánja-e törölni az adott To-Dot.
