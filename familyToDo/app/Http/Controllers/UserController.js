@@ -72,11 +72,20 @@ class UserController {
 
     * editProfile (request, response) {
         const userData = request.except('_csrf');
-        const rules = {
-            username: 'required|unique:users|alpha_numeric'
-            , password: 'required|min:3'
-            , password_confirm: 'required|same:password'
-        };
+        const user     = yield User.find(request.currentUser.id);
+        var rules;
+        if (user.username === userData.username) {
+            rules = {
+                password: 'required|min:3'
+                , password_confirm: 'required|same:password'
+            };
+        } else {
+            rules = {
+                username: 'required|unique:users|alpha_numeric'
+                , password: 'required|min:3'
+                , password_confirm: 'required|same:password'
+            };
+        }
         const validation = yield Validator.validateAll(userData, rules);
 
         if (validation.fails()) {
@@ -86,7 +95,6 @@ class UserController {
                 .flash();
             response.redirect('back');
         } else {
-            const user      = yield User.find(request.currentUser.id);
             user.username   = userData.username;
             user.password   = yield Hash.make(userData.password);
 
@@ -108,6 +116,31 @@ class UserController {
         } else {
             response.notFound('Nincs ilyen felhasználó.');
         }
+    }
+
+    * ajaxLogin (request, response) {
+        const email = request.input('email');
+        const password = request.input('password');
+
+        try {
+            const login = yield request.auth.attempt(email, password) 
+            if (login) {
+                response.send({ success: true });
+                return;
+            }
+        } catch (err) {
+            response.send({ success: false });
+        }
+    }
+
+    * logout (request, response) {
+        yield request.auth.logout();
+        response.redirect('/');
+    }
+
+    * ajaxLogout (request, response) {
+        yield request.auth.logout();
+        response.send({ success: true });
     }
 }
 

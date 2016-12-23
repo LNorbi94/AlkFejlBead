@@ -26,10 +26,14 @@ Route.get('/login', 'UserController.login');
 Route.post('/login', 'UserController.doLogin');
 Route.get('/logout', 'UserController.logout');
 Route.get('/profile', 'UserController.profile');
-Route.post('/profile', 'UserController.editProfile');
-Route.get('/profile/delete', 'UserController.doDelete');
+Route.post('/profile', 'UserController.editProfile').middleware('auth');
+Route.get('/profile/delete', 'UserController.doDelete').middleware('auth');
 
 
 Route.group('ajax', function () {
     Route.post('/search', 'TodoController.ajaxSearch');
+    Route.delete('/todos/:id/delete', 'TodoController.ajaxDelete').middleware('auth');
+    Route.delete('/categories/:id/delete', 'CategoryController.ajaxDelete').middleware('auth');
+    Route.post('/login', 'UserController.ajaxLogin');
+    Route.get('/logout', 'UserController.ajaxLogout');
 }).prefix('/ajax');

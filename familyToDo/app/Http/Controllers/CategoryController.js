@@ -84,6 +84,21 @@ class CategoryController {
             response.redirect('/');
         }
     }
+
+    * ajaxDelete (request, response) {
+        const id = request.param('id');
+        const category = yield Category.find(id);
+        if (category) {
+            const todos = yield category.todos().fetch();
+            for (let todo of todos) {
+                yield todo.delete();
+            }
+            yield category.delete();
+            response.ok({ success: true });
+        } else {
+            response.notFound('Hiba történt a feldolgozás során!');
+        }
+    }
 }
 
 module.exports = CategoryController;
