@@ -60,11 +60,11 @@
 - POST /todos/create: to-do készítése (adatok feltöltése az adatbázisba)
 - GET /categories/create: kategória készítése (felhasználótól az adatok elkérése)
 - POST /categories/create: kategória készítése (adatok feltöltése az adatbázisba)
-- GET /todos/:id: id-adik to-do lekérése
+- GET /todos/:id : id-adik to-do lekérése
 - GET /todos/:id/edit: id-adik to-do szerkesztése (felhasználótól az adatok elkérése)
 - POST /todos/:id/edit: id-adik to-do szerkesztése (adatok frissítése az adatbázisban)
 - GET /todos/:id/delete: id-adik to-do törlése
-- GET /categories/:id: id-adik kategória lekérése
+- GET /categories/:id : id-adik kategória lekérése
 - GET /categories/:id/edit: id-adik kategória szerkesztése (felhasználótól az adatok elkérése)
 - POST /categories/:id/edit: id-adik kategória szerkesztése (adatok frissítése az adatbázisban)
 - GET /categories/:id/delete: id-adik kategória törlése
