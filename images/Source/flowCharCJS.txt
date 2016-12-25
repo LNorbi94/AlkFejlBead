@@ -1,0 +1,8 @@
+#direction: right
+
+[<start>st]->[<state>fõoldal]
+[fõoldal]->[<state>bejelentkezés]
+[bejelentkezés]->[<choice>jó adatok]
+[jó adatok] nem ->[bejelentkezés]
+[jó adatok] igen ->[<state>fejléc újratöltése]
+[fejléc újratöltése] ->[<end>e]

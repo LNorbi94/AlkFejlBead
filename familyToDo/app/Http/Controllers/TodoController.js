@@ -140,7 +140,34 @@ class TodoController {
                 , noFilter: true
             })
         }
-  }
+    }
+
+    * ajaxSearch (request, response) {
+        const filters = { todoName: request.input('todoName') };
+
+        if (filters.todoName.length > 0) {
+            const todos = yield Todo.query()
+            .where(function () {
+                if (filters.todoName.length > 0) this.where('name', 'LIKE', `%${filters.todoName}%`)
+            });
+
+            response.ok({ success: true, todos });
+
+        } else {
+            response.notFound('Nincs ilyen To-Do!');
+        }
+    }
+    
+    * ajaxDelete (request, response) {
+        const id = request.param('id');
+        const todo = yield Todo.find(id);
+        if (todo) {
+            yield todo.delete();
+            response.ok({ success: true });
+        } else {
+            response.notFound('Hiba történt a feldolgozás során!');
+        }
+    }
 }
 
 module.exports = TodoController;
